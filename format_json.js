@@ -1,3 +1,5 @@
+export { formatObject };
+
 const indent = '\t';
 
 function formatObject (jsonObject, indentSize = 1) {
@@ -41,5 +43,3 @@ function formatArray (jsonArray, indentSize = 1) {
     arrayString = arrayString + '\n' + indent.repeat(indentSize - 1) + ']';
     return arrayString;
 };
-
-// console.log(formatObject({"a": 1, b: [2, 3, 4], c: {d: 6, e: [7, 8], f: 9}}));
