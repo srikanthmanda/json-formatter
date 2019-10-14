@@ -1,6 +1,16 @@
-export { formatObject };
+export { formatJSON };
 
 const indent = '\t';
+
+function formatJSON (unformattedJSON) {
+    if (Array.isArray(unformattedJSON)) {
+        return formatArray(unformattedJSON);
+    } else if (typeof unformattedJSON === 'object') {
+        return formatObject(unformattedJSON);
+    } else {
+        throw new TypeError('Invalid input type');
+    }
+}
 
 function formatObject (jsonObject, indentSize = 1) {
     let objectString = '{';
@@ -11,6 +21,8 @@ function formatObject (jsonObject, indentSize = 1) {
             keyValue = formatArray(value, indentSize + 1);
         } else if (typeof value === 'object') {
             keyValue = formatObject(value, indentSize + 1);
+        } else if (typeof value === 'number') {
+            keyValue = value;
         } else {
             keyValue = "\"" + value + "\"";
         }
@@ -32,6 +44,8 @@ function formatArray (jsonArray, indentSize = 1) {
             keyValue = formatArray(element, indentSize + 1);
         } else if (typeof element === 'object') {
             keyValue = formatObject(element, indentSize + 1);
+        } else if (typeof element === 'number') {
+            keyValue = element;
         } else {
             keyValue = "\"" + element + "\"";
         }
