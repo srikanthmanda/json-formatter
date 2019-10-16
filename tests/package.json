@@ -1,0 +1,9 @@
+{
+    "esm": { "cjs": true },
+    "nyc": { "require": [ "esm" ] },
+    "mocha": { "require": [ "esm" ] },
+    "scripts": {
+      "test": "mocha",
+      "testcov": "nyc --reporter=text mocha"
+    }
+}
