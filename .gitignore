@@ -1,1 +1,7 @@
 .vscode
+.nyc_output
+node_modules
+coverage
+test/.nyc_output
+test/node_modules
+test/coverage
