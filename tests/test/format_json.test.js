@@ -73,4 +73,18 @@ describe('formatJSON function', function() {
             formatJSON('[');
         });
     });
+
+    it('and formats Object with null value too', function () {
+        assert.equal(formatJSON(JSON.parse('{"key": null}')), '{\n'
+            + '	"key": null\n'
+            + '}'
+        );
+    });
+
+    it('and formats Array with null value too', function () {
+        assert.equal(formatJSON(JSON.parse('[null]')), '[\n'
+            + '	null\n'
+            + ']'
+        );
+    });
 });
