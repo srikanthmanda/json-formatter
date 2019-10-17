@@ -19,6 +19,8 @@ function formatObject (jsonObject, indentSize = 1) {
         let keyValue;
         if (Array.isArray(value)) {
             keyValue = formatArray(value, indentSize + 1);
+        } else if (value === null) {
+            keyValue = String(null);
         } else if (typeof value === 'object') {
             keyValue = formatObject(value, indentSize + 1);
         } else if (typeof value === 'number') {
@@ -42,6 +44,8 @@ function formatArray (jsonArray, indentSize = 1) {
         let keyValue;
         if (Array.isArray(element)) {
             keyValue = formatArray(element, indentSize + 1);
+        } else if (element === null) {
+            keyValue = 'null';
         } else if (typeof element === 'object') {
             keyValue = formatObject(element, indentSize + 1);
         } else if (typeof element === 'number') {
