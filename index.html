@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Format JSON</title>
-    <link rel="stylesheet" type="text/css" href="web.css" />
-    <script type="module" src="index.js"></script>
+	<meta charset="UTF-8">
+	<title>JSON Formatter</title>
+	<meta name="author" content="Srikanth Manda">
+	<meta name="description" content="A client-side JSON formatter that relies on JSON.parse() function.">
+	<link rel="stylesheet" type="text/css" href="web.css" />
+	<script type="module" src="index.js"></script>
 </head>
 <body>
-    <div id="input">
-        <label for="json_text">Unformatted JSON text</label>
-        <textarea class="codebox" id="json_text" name="json_text" required autofocus rows=5 cols="120" placeholder= "Paste your JSON text here ..."></textarea>        
-    </div>
-    <div id="controls">
-        <button type="button" id="format_json">Format JSON</button>
-    </div>
-    <div id="output">
-        <label for="formatted_json_text">Formatted JSON text</label>
-        <textarea class="codebox" id="formatted_json_text" name="formatted_json_text" readonly rows=15 cols="120" placeholder= "Formatted JSON text will appear here ..."></textarea>        
-    </div>
+	<h2>JSON Formatter</h2>
+	<div id="about">
+		<p>
+		A client-side <a href="https://json.org">JSON</a> formatter using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a>. Source is on <a href="https://github.com/srikanthmanda/json-formatter">Github</a> (along with <a href="https://github.com/srikanthmanda/json-formatter/issues">issues</a>, including some I need help with).
+		</p>
+	</div>
+	<div id="input">
+		<label for="json_text">Unformatted JSON text</label>
+		<textarea class="codebox" id="json_text" name="json_text" required autofocus rows=5 cols="120" placeholder= "Paste your JSON text here ..."></textarea>
+	</div>
+	<div id="controls">
+		<button type="button" id="format_json">Format JSON</button>
+	</div>
+	<br>
+	<div id="output">
+		<label for="formatted_json_text">Formatted JSON text</label>
+		<textarea class="codebox" id="formatted_json_text" name="formatted_json_text" readonly rows=15 cols="120" placeholder= "Formatted JSON text will appear here ..."></textarea>		
+	</div>
 </body>
 </html>

@@ -27,7 +27,7 @@ function formatObject (jsonObject, indents = 1) {
     }
     objectString = objectString + '\n' + indent.repeat(indents - 1) + '}';
     return objectString;
-};
+}
 
 function formatArray (jsonArray, indents = 1) {
     let arrayString = '[';
