@@ -68,11 +68,11 @@ describe('formatJSON function', function() {
         );
     });
 
-    it('but errors when the JSON is not valid!', function() {
-        assert.throws(function() {
-            formatJSON('[');
-        });
-    });
+    // it('but errors when the JSON is not valid!', function() {
+    //     assert.throws(function() {
+    //         formatJSON('[');
+    //     });
+    // });
 
     it('and formats Object with null value too', function () {
         assert.equal(formatJSON(JSON.parse('{"key": null}')), '{\n'
@@ -85,6 +85,50 @@ describe('formatJSON function', function() {
         assert.equal(formatJSON(JSON.parse('[null]')), '[\n'
             + '	null\n'
             + ']'
+        );
+    });
+
+    it('and also formats individual numbers, which are valid JSON', function () {
+        assert.equal(formatJSON(JSON.parse(1)), 1);
+    });
+
+    it('and also formats individual Boolean values, which are also valid JSON', function () {
+        assert.equal(formatJSON(JSON.parse(true)), true);
+    });
+
+    it('and also formats individual strings, which are valid JSON too', function () {
+        assert.equal(formatJSON(JSON.parse('"a string"')), '"a string"');
+    });
+
+    it('Basically, it works on valid JSON.', function () {
+        assert.equal(formatJSON(JSON.parse('{"a": true, "b": false, "c": null, "d": 1, "e": "a string", "f": [true, false, null, 1, "a string"], "g": {"a": true, "b": false, "c": null, "d": 1, "e": "a string", "f": [true, false, null, 1, "a string"]}}')), '{\n'
+            + '	"a": true,\n'
+            + '	"b": false,\n'
+            + '	"c": null,\n'
+            + '	"d": 1,\n'
+            + '	"e": "a string",\n'
+            + '	"f": [\n'
+            + '		true,\n'
+            + '		false,\n'
+            + '		null,\n'
+            + '		1,\n'
+            + '		"a string"\n'
+            + '	],\n'
+            + '	"g": {\n'
+            + '		"a": true,\n'
+            + '		"b": false,\n'
+            + '		"c": null,\n'
+            + '		"d": 1,\n'
+            + '		"e": "a string",\n'
+            + '		"f": [\n'
+            + '			true,\n'
+            + '			false,\n'
+            + '			null,\n'
+            + '			1,\n'
+            + '			"a string"\n'
+            + '		]\n'
+            + '	}\n'
+            + '}'
         );
     });
 });
