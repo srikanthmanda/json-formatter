@@ -1,0 +1,26 @@
+{
+    "esm": {
+        "cjs": true
+    },
+    "nyc": {
+        "require": [
+            "esm"
+        ]
+    },
+    "mocha": {
+        "require": [
+            "esm"
+        ]
+    },
+    "scripts": {
+      "test": "mocha",
+      "testcov": "nyc --reporter=text mocha"
+    },
+    "main": "../format_json.js",
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "esm": "^3.2.25",
+        "mocha": "^6.2.1",
+        "nyc": "^14.1.1"
+    }
+}
