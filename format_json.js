@@ -2,52 +2,43 @@ export { formatJSON };
 
 const indent = '\t';
 
-function formatJSON (unformattedJSON) {
-    if (Array.isArray(unformattedJSON)) {
-        return formatArray(unformattedJSON);
-    } else if (typeof unformattedJSON === 'object') {
-        return formatObject(unformattedJSON);
-    } else {
-        throw new TypeError('Invalid input type');
+function formatJSON (input, indents = 0) {
+    const inputType = typeof(input);
+    if (inputType === 'string') {
+        return ('\"' + input + '\"');
+    } else if (inputType === 'number' || inputType === 'boolean' || input === null) {
+        return input;
+    } else if (Array.isArray(input)) {
+        return formatArray(input, indents + 1);
+    } else if (inputType === 'object') {
+        return formatObject(input, indents + 1);
     }
 }
 
-function formatObject (jsonObject, indentSize = 1) {
+function formatObject (jsonObject, indents = 1) {
     let objectString = '{';
     let delimiter = '';
     for (let [key, value] of Object.entries(jsonObject)) {
-        objectString = objectString + delimiter + '\n' + indent.repeat(indentSize) + "\"" + key + "\": " + formatValue(value, indentSize);
+        objectString = objectString + delimiter + '\n'
+            + indent.repeat(indents) + "\"" + key + "\": " + formatJSON(value, indents);
         if (delimiter === '') {
             delimiter = ',';
         }
     }
-    objectString = objectString + '\n' + indent.repeat(indentSize - 1) + '}';
+    objectString = objectString + '\n' + indent.repeat(indents - 1) + '}';
     return objectString;
 };
 
-function formatArray (jsonArray, indentSize = 1) {
+function formatArray (jsonArray, indents = 1) {
     let arrayString = '[';
     let delimiter = '';
     for (let element of jsonArray) {
-        arrayString = arrayString + delimiter + '\n' + indent.repeat(indentSize) + formatValue(element, indentSize);
+        arrayString = arrayString + delimiter + '\n'
+            + indent.repeat(indents) + formatJSON(element, indents);
         if (delimiter === '') {
             delimiter = ',';
         }
     }
-    arrayString = arrayString + '\n' + indent.repeat(indentSize - 1) + ']';
+    arrayString = arrayString + '\n' + indent.repeat(indents - 1) + ']';
     return arrayString;
-};
-
-function formatValue(value, indentSize = 1) {
-    if (Array.isArray(value)) {
-        return formatArray(value, indentSize + 1);
-    } else if (value === null) {
-        return 'null';
-    } else if (typeof value === 'object') {
-        return formatObject(value, indentSize + 1);
-    } else if (typeof value === 'number') {
-        return value;
-    } else {
-        return ("\"" + value + "\"");
-    }
 }
