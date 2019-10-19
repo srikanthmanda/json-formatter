@@ -7,7 +7,7 @@ version: 2.1 # use CircleCI 2.1
 
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
-    working_directory: ~/tests # directory where steps will run
+    working_directory: ~/repo/tests # directory where steps will run
     docker: # run the steps with Docker
       - image: circleci/node:10.16.3 # ...with this image as the primary container; this is where all `steps` will run
     steps: # a collection of executable commands
