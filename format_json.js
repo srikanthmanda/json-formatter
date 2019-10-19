@@ -16,19 +16,7 @@ function formatObject (jsonObject, indentSize = 1) {
     let objectString = '{';
     let delimiter = '';
     for (let [key, value] of Object.entries(jsonObject)) {
-        let keyValue;
-        if (Array.isArray(value)) {
-            keyValue = formatArray(value, indentSize + 1);
-        } else if (value === null) {
-            keyValue = String(null);
-        } else if (typeof value === 'object') {
-            keyValue = formatObject(value, indentSize + 1);
-        } else if (typeof value === 'number') {
-            keyValue = value;
-        } else {
-            keyValue = "\"" + value + "\"";
-        }
-        objectString = objectString + delimiter + '\n' + indent.repeat(indentSize) + "\"" + key + "\": " + keyValue;
+        objectString = objectString + delimiter + '\n' + indent.repeat(indentSize) + "\"" + key + "\": " + formatValue(value, indentSize);
         if (delimiter === '') {
             delimiter = ',';
         }
@@ -41,19 +29,7 @@ function formatArray (jsonArray, indentSize = 1) {
     let arrayString = '[';
     let delimiter = '';
     for (let element of jsonArray) {
-        let keyValue;
-        if (Array.isArray(element)) {
-            keyValue = formatArray(element, indentSize + 1);
-        } else if (element === null) {
-            keyValue = 'null';
-        } else if (typeof element === 'object') {
-            keyValue = formatObject(element, indentSize + 1);
-        } else if (typeof element === 'number') {
-            keyValue = element;
-        } else {
-            keyValue = "\"" + element + "\"";
-        }
-        arrayString = arrayString + delimiter + '\n' + indent.repeat(indentSize) + keyValue;
+        arrayString = arrayString + delimiter + '\n' + indent.repeat(indentSize) + formatValue(element, indentSize);
         if (delimiter === '') {
             delimiter = ',';
         }
@@ -61,3 +37,17 @@ function formatArray (jsonArray, indentSize = 1) {
     arrayString = arrayString + '\n' + indent.repeat(indentSize - 1) + ']';
     return arrayString;
 };
+
+function formatValue(value, indentSize = 1) {
+    if (Array.isArray(value)) {
+        return formatArray(value, indentSize + 1);
+    } else if (value === null) {
+        return 'null';
+    } else if (typeof value === 'object') {
+        return formatObject(value, indentSize + 1);
+    } else if (typeof value === 'number') {
+        return value;
+    } else {
+        return ("\"" + value + "\"");
+    }
+}
