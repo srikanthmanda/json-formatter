@@ -15,9 +15,17 @@
     "scripts": {
         "test": "mocha",
         "testcov": "nyc --reporter=text mocha",
-        "cypress:open": "cypress open"
+        "cypress:open": "cypress open",
+        "cy:run": "cypress run",
+        "start:ci": "serve .. --no-clipboard --listen ${PORT:-8080}",
+        "start:ci:windows": "serve .. --no-clipboard --listen 8080",
+        "e2e:record": "cypress run --record",
+        "cy:verify": "cypress verify"
     },
     "main": "../format_json.js",
+    "dependencies": {
+        "serve": "11.2.0"
+    },
     "devDependencies": {
         "chai": "^4.2.0",
         "cypress": "^3.4.1",

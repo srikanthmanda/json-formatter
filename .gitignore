@@ -5,3 +5,7 @@ coverage
 tests/.nyc_output
 tests/node_modules
 tests/coverage
+tests/cypress/fixtures
+tests/cypress/plugins
+tests/cypress/support
+tests/cypress/videos

@@ -1,6 +1,8 @@
+const server='http://localhost:8080';
+
 describe('JSON Formatter', function() {
 	it('formats Array with numbers, Booleans and null', function() {
-		cy.visit('https://srikanthmanda.com/json-formatter');
+		cy.visit(server);
 		cy.get('#json_text')
 		.type('[1, true, false, null, 0]')
 		.should('have.value', '[1, true, false, null, 0]');
