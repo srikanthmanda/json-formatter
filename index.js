@@ -1,4 +1,4 @@
-import { formatJSON } from './format_json.js'
+import { formatJSON } from './format_json.js';
 
 export function parseJSON() {
     const unformattedJSON = document.getElementById('json_text').value;
