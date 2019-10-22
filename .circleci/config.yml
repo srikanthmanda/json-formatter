@@ -54,9 +54,12 @@ jobs:
       # install npm dependencies and Cypress binary
       # if they were cached, this step is super quick
       - run:
+          working_directory: tests
           name: Install dependencies
           command: npm ci
-      - run: npm run cy:verify
+      - run:
+          working_directory: tests
+          command: npm run cy:verify
       # save npm dependencies and Cypress binary for future runs
       - save_cache:
           key: cache-{{ checksum "package.json" }}
@@ -65,9 +68,12 @@ jobs:
             - ~/.cache
       # start server before starting tests
       - run:
+          working_directory: tests
           command: npm run start:ci
           background: true
-      - run: npm run e2e:record
+      - run:
+          working_directory: tests
+          command: npm run e2e:record
 
 workflows:
   version: 2
