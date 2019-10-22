@@ -10,7 +10,7 @@ version: 2.1
 #  codecov: codecov/codecov@1.0.5
 
 jobs:
-  build:
+  unit-tests:
     docker:
       - image: circleci/node:10.16.3	
     steps:
@@ -42,7 +42,7 @@ jobs:
       #- codecov/upload:
       #    file: <coverage report path>
   
-  test:
+  ui-tests:
     docker:
       - image: cypress/base:10
     steps:
@@ -68,3 +68,10 @@ jobs:
           command: npm run start:ci
           background: true
       - run: npm run e2e:record
+
+workflows:
+  version: 2
+  tests:
+    jobs:
+      - unit-tests
+      - ui-tests
