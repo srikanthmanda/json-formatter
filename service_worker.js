@@ -1,5 +1,5 @@
 const cachePrefix = 'jsonformatter::';
-const cacheVer = 'v2';
+const cacheVer = 'v3';
 const cacheName = cachePrefix + cacheVer;
 
 const cacheResources = ['index.html', 'web.css', 'index.js', 'format_json.js', 'sri_json.png'];
