@@ -1,0 +1,16 @@
+{
+	"short_name": "json_formatter",
+	"name": "JSON Formatter",
+	"icons": [
+		{
+			"src": "./sri_json.png",
+			"type": "image/png",
+			"sizes": "569x569"
+		}
+	],
+	"start_url": "./index.html",
+	"background_color": "#3367D6",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "rebeccapurple"
+}

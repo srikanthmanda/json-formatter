@@ -2,6 +2,13 @@
     "esm": {
         "cjs": true
     },
+    "lighthouse": {
+        "requiredScores": {
+            "performance": 90,
+            "accessibility": 95,
+            "best-practices": 80
+        }
+    },
     "nyc": {
         "require": [
             "esm"
@@ -20,7 +27,8 @@
         "start:ci": "serve .. --no-clipboard --listen ${PORT:-8080}",
         "start:ci:windows": "serve .. --no-clipboard --listen 8080",
         "e2e:record": "cypress run --record",
-        "cy:verify": "cypress verify"
+        "cy:verify": "cypress verify",
+        "lh": "lighthouse http://localhost:8080"
     },
     "main": "../format_json.js",
     "dependencies": {
@@ -30,6 +38,7 @@
         "chai": "^4.2.0",
         "cypress": "^3.4.1",
         "esm": "^3.2.25",
+        "lighthouse": "^5.6.0",
         "mocha": "^6.2.1",
         "nyc": "^14.1.1"
     }
