@@ -47,12 +47,6 @@ jobs:
       - image: cypress/base:10
     steps:
       - checkout
-      # restore folders with npm dependencies and Cypress binary
-      - restore_cache:
-          keys:
-            - cache-{{ checksum "package.json" }}
-      # install npm dependencies and Cypress binary
-      # if they were cached, this step is super quick
       - run:
           working_directory: tests
           name: Install dependencies
@@ -60,13 +54,6 @@ jobs:
       - run:
           working_directory: tests
           command: npm run cy:verify
-      # save npm dependencies and Cypress binary for future runs
-      - save_cache:
-          key: cache-{{ checksum "package.json" }}
-          paths:
-            - ~/.npm
-            - ~/.cache
-      # start server before starting tests
       - run:
           working_directory: tests
           command: npm run start:ci
@@ -74,6 +61,9 @@ jobs:
       - run:
           working_directory: tests
           command: npm run e2e:record
+      - run:
+          working_directory: tests
+          command: npm run lh
 
 workflows:
   version: 2
