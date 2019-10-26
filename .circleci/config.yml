@@ -61,9 +61,9 @@ jobs:
       - run:
           working_directory: tests
           command: npm run e2e:record
-      - run:
-          working_directory: tests
-          command: npm run lh
+      # - run:
+      #     working_directory: tests
+      #     command: npm run lh
 
 workflows:
   version: 2
