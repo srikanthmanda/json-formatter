@@ -13,4 +13,12 @@ export function parseJSON() {
     }
 }
 
-document.querySelector('button').addEventListener('click', parseJSON);
+document.getElementById('format_json').addEventListener('click', parseJSON);
+
+function copyToClipboard() {
+    const formattedJSON = document.getElementById('formatted_json_text');
+    formattedJSON.select();
+    document.execCommand("copy");
+}
+
+document.getElementById('copy_formatted_json').addEventListener("click", copyToClipboard);
