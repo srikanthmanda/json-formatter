@@ -7,7 +7,7 @@
 	<meta name="description" content="A client-side JSON formatter that relies on JSON.parse() function.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="module" src="./index.js"></script>
-	<link rel="canonical" href="https://srikanthmanda.com/json-formatter">
+	<link rel="canonical" href="https://srikanthmanda.com/json-formatter/">
 	<link rel="stylesheet" type="text/css" href="./web.css">
 	<link rel="icon" href="./sri_json.png" type="image/png">
 	<link rel="manifest" href="./manifest.json">
@@ -33,7 +33,7 @@
 	</div>
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('./service_worker.js', {scope: './'})
+			navigator.serviceWorker.register('service_worker.js')
 			.then(
 				onFulfillment => console.log("Service Worker registered", onFulfillment),
 				onRejection => console.log("Service Worker registration failed", onRejection)

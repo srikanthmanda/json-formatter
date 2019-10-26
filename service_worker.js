@@ -1,8 +1,8 @@
 const cachePrefix = 'jsonformatter::';
-const cacheVer = 'v1';
+const cacheVer = 'v2';
 const cacheName = cachePrefix + cacheVer;
 
-const cacheResources = ['/', '/index.html', '/web.css', '/index.js', '/format_json.js', '/sri_json.png'];
+const cacheResources = ['index.html', 'web.css', 'index.js', 'format_json.js', 'sri_json.png'];
 
 self.addEventListener('install', event => {
 	event.waitUntil(
@@ -16,7 +16,8 @@ self.addEventListener('activate', event => {
 		caches.keys()
 		.then(cacheKeys => {
 			return Promise.all(
-				cacheKeys.filter(cacheKey => !cacheKey.includes(cacheName))
+				cacheKeys.filter(cacheKey => !cacheKey.startsWith(cachePrefix))
+				.filter(cacheKey => !cacheKey.includes(cacheName))
 				.map(oldCacheKey => caches.delete(oldCacheKey))
 			);
 		})
