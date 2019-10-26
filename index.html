@@ -5,8 +5,12 @@
 	<title>JSON Formatter</title>
 	<meta name="author" content="Srikanth Manda">
 	<meta name="description" content="A client-side JSON formatter that relies on JSON.parse() function.">
-	<link rel="stylesheet" type="text/css" href="web.css" />
-	<script type="module" src="index.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="module" src="./index.js"></script>
+	<link rel="canonical" href="https://srikanthmanda.com/json-formatter">
+	<link rel="stylesheet" type="text/css" href="./web.css">
+	<link rel="icon" href="./sri_json.png" type="image/png">
+	<link rel="manifest" href="./manifest.json">
 </head>
 <body>
 	<h2>JSON Formatter</h2>
@@ -27,5 +31,16 @@
 		<label for="formatted_json_text">Formatted JSON text</label>
 		<textarea class="codebox" id="formatted_json_text" name="formatted_json_text" readonly rows=15 cols="120" placeholder= "Formatted JSON text will appear here ..."></textarea>		
 	</div>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('./service_worker.js', {scope: './'})
+			.then(
+				onFulfillment => console.log("Service Worker registered", onFulfillment),
+				onRejection => console.log("Service Worker registration failed", onRejection)
+			);
+		} else {
+			console.log("Service Worker not supported");
+		}
+	</script>
 </body>
 </html>
