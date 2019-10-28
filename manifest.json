@@ -3,9 +3,9 @@
 	"name": "JSON Formatter",
 	"icons": [
 		{
-			"src": "./sri_json.png",
+			"src": "icons/ajsonstring.png",
 			"type": "image/png",
-			"sizes": "569x569"
+			"sizes": "512x512"
 		}
 	],
 	"start_url": "./index.html",

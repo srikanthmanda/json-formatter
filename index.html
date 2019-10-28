@@ -4,24 +4,24 @@
 	<meta charset="UTF-8">
 	<title>JSON Formatter</title>
 	<meta name="author" content="Srikanth Manda">
-	<meta name="description" content="A client-side JSON formatter that relies on JSON.parse() function.">
+	<meta name="description" content="An opinionated, offline-first, client-side JSON formatter built on JSON.parse() function, using Service Worker.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="module" src="./index.js"></script>
 	<link rel="canonical" href="https://srikanthmanda.com/json-formatter/">
 	<link rel="stylesheet" type="text/css" href="./web.css">
-	<link rel="icon" href="./sri_json.png" type="image/png">
+	<link rel="icon" href="icons/ajsonstring.png" type="image/png">
+	<link rel="apple-touch-icon" href="icons/ajsonstring.png" type="image/png">
 	<link rel="manifest" href="./manifest.json">
 </head>
 <body>
 	<h2>JSON Formatter</h2>
 	<div id="about">
-		<p>
-		A client-side <a href="https://json.org">JSON</a> formatter using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a>. Source is on <a href="https://github.com/srikanthmanda/json-formatter">Github</a> (along with <a href="https://github.com/srikanthmanda/json-formatter/issues">issues</a>, including some I need help with).
-		</p>
+		<p>An opinionated, <a href="https://developers.google.com/web/fundamentals/codelabs/offline">offline-first</a>, client-side <a href="https://json.org">JSON</a> formatter built on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a>, using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service Worker</a>.
+		<br>Source is on <a href="https://github.com/srikanthmanda/json-formatter">Github</a> and so are <a href="https://github.com/srikanthmanda/json-formatter/issues">issues</a>, including some I need your help with.</p>
 	</div>
 	<div id="input">
 		<label for="json_text">Unformatted JSON text</label>
-		<textarea class="codebox" id="json_text" name="json_text" required autofocus rows=5 cols="120" placeholder= "Paste your JSON text here ..."></textarea>
+		<textarea class="codebox" id="json_text" name="json_text" required autofocus placeholder= "Paste your JSON text here ..."></textarea>
 	</div>
 	<div id="controls">
 		<button type="button" id="format_json">Format JSON</button>
@@ -30,7 +30,7 @@
 	<br>
 	<div id="output">
 		<label for="formatted_json_text">Formatted JSON text</label>
-		<textarea class="codebox" id="formatted_json_text" name="formatted_json_text" readonly rows=15 cols="120" placeholder= "Formatted JSON text will appear here ..."></textarea>		
+		<textarea class="codebox" id="formatted_json_text" name="formatted_json_text" readonly placeholder= "Formatted JSON text will appear here ..."></textarea>
 	</div>
 	<script>
 		if ('serviceWorker' in navigator) {

@@ -1,14 +1,14 @@
 const cachePrefix = 'jsonformatter::';
-const cacheVer = 'v3';
+const cacheVer = 'v4';
 const cacheName = cachePrefix + cacheVer;
 
-const cacheResources = ['index.html', 'web.css', 'index.js', 'format_json.js', 'sri_json.png'];
+const cacheResources = ['index.html', 'web.css', 'index.js', 'format_json.js', 'favicon.ico'];
 
 self.addEventListener('install', event => {
 	event.waitUntil(
 		caches.open(cacheName)
 		.then(cache => cache.addAll(cacheResources))
- 	);
+	);
 });
 
 self.addEventListener('activate', event => {
