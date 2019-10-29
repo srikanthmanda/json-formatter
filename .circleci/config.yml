@@ -34,12 +34,11 @@ jobs:
           name: report-code-coverage
           command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
       - store_artifacts:
-          working_directory: tests
-          path: coverage.lcov
+          path: tests/coverage.lcov
 
       # Steps to push code coverage report to codecov.io
       - codecov/upload:
-          file: coverage.lcov
+          file: tests/coverage.lcov
   
   ui-tests:
     docker:
