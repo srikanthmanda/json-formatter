@@ -10,7 +10,7 @@
         }
     },
     "scripts": {
-        "copysrc": "cp ../format_json.js src/format_json.js",
+        "copysrc": "cp ../format_json.js src",
         "test": "npm run copysrc && mocha --require esm",
         "testcov": "npm run copysrc && nyc mocha --require esm",
         "cypress:open": "cypress open",
