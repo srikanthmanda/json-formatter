@@ -21,10 +21,10 @@ jobs:
           working_directory: tests # directory where steps will run
           name: install-npm-wee
           command: npm install
-      - run:
-          working_directory: tests
-          name: test
-          command: npm test
+      # - run:
+      #     working_directory: tests
+      #     name: test
+      #     command: npm test
       - run:
           working_directory: tests
           name: code-coverage
@@ -32,7 +32,9 @@ jobs:
       - run:
           working_directory: tests
           name: report-code-coverage
-          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage/coverage.lcov
+          command: node_modules/.bin/nyc report --reporter=text-lcov >coverage/coverage.lcov
+      - store_artifacts:
+          path: coverage/coverage.lcov
 
       # Steps to push code coverage report to codecov.io
       - codecov/upload:
