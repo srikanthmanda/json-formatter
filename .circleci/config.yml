@@ -32,13 +32,13 @@ jobs:
       - run:
           working_directory: tests
           name: report-code-coverage
-          command: node_modules/.bin/nyc report --reporter=text-lcov #>coverage/coverage.lcov
-      # - store_artifacts:
-      #     path: coverage/coverage.lcov
+          command: node_modules/.bin/nyc report --reporter=text-lcov >tests/coverage/coverage.lcov
+      - store_artifacts:
+          path: tests/coverage/coverage.lcov
 
       # Steps to push code coverage report to codecov.io
-      # - codecov/upload:
-      #    file: coverage/coverage.lcov
+      - codecov/upload:
+          file: tests/coverage/coverage.lcov
   
   ui-tests:
     docker:
