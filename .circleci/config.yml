@@ -34,7 +34,7 @@ jobs:
           name: report-code-coverage
           command: nyc report --reporter=text-lcov > coverage/coverage.lcov
 
-      Steps to push code coverage report to codecov.io
+      # Steps to push code coverage report to codecov.io
       - codecov/upload:
          file: coverage/coverage.lcov
   
