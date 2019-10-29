@@ -11,7 +11,7 @@ orbs:
 jobs:
   unit-tests:
     docker:
-      - image: circleci/node:10.16.3	
+      - image: circleci/node:10.16.3
     steps:
       - checkout
       - run:
@@ -32,13 +32,13 @@ jobs:
       - run:
           working_directory: tests
           name: report-code-coverage
-          command: node_modules/.bin/nyc report --reporter=text-lcov >tests/coverage/coverage.lcov
+          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
       - store_artifacts:
-          path: tests/coverage/coverage.lcov
+          path: coverage.lcov
 
       # Steps to push code coverage report to codecov.io
       - codecov/upload:
-          file: tests/coverage/coverage.lcov
+          file: coverage.lcov
   
   ui-tests:
     docker:
