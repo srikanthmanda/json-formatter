@@ -9,19 +9,10 @@
             "best-practices": 80
         }
     },
-    "nyc": {
-        "require": [
-            "esm"
-        ]
-    },
-    "mocha": {
-        "require": [
-            "esm"
-        ]
-    },
     "scripts": {
-        "test": "mocha",
-        "testcov": "nyc --reporter=text mocha",
+        "copysrc": "cp ../format_json.js src/format_json.js",
+        "test": "npm run copysrc && mocha --require esm",
+        "testcov": "npm run copysrc && nyc mocha --require esm",
         "cypress:open": "cypress open",
         "cy:run": "cypress run",
         "start:ci": "serve .. --no-clipboard --listen ${PORT:-8080}",
@@ -30,16 +21,13 @@
         "cy:verify": "cypress verify",
         "lh": "lighthouse http://localhost:8080"
     },
-    "main": "../format_json.js",
-    "dependencies": {
-        "serve": "11.2.0"
-    },
     "devDependencies": {
         "chai": "^4.2.0",
         "cypress": "^3.4.1",
         "esm": "^3.2.25",
         "lighthouse": "^5.6.0",
         "mocha": "^6.2.1",
-        "nyc": "^14.1.1"
+        "nyc": "^14.1.1",
+        "serve": "11.2.0"
     }
 }
