@@ -4,15 +4,14 @@ version: 2.1
 # https://circleci.com/docs/2.0/language-javascript/
 # https://github.com/cypress-io/cypress-example-kitchensink/blob/master/basic/circle.yml
 
-# TODO - Test coverage
 # Orb to integrate Codecov
-#orbs:
-#  codecov: codecov/codecov@1.0.5
+orbs:
+ codecov: codecov/codecov@1.0.5
 
 jobs:
   unit-tests:
     docker:
-      - image: circleci/node:10.16.3	
+      - image: circleci/node:10.16.3
     steps:
       - checkout
       - run:
@@ -22,25 +21,24 @@ jobs:
           working_directory: tests # directory where steps will run
           name: install-npm-wee
           command: npm install
+      # - run:
+      #     working_directory: tests
+      #     name: test
+      #     command: npm test
       - run:
           working_directory: tests
-          name: test
-          command: npm test
-      #- run:
-      #    name: code-coverage
-      #    command: './node_modules/.bin/nyc report --reporter=text-lcov'
-      #- store_artifacts:
-      #    path: test-results.xml
-      #    prefix: tests
-      #- store_artifacts:
-      #    path: coverage
-      #    prefix: coverage
-      #- store_test_results:
-      #    path: test-results.xml
+          name: code-coverage
+          command: npm run testcov
+      - run:
+          working_directory: tests
+          name: report-code-coverage
+          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
+      - store_artifacts:
+          path: tests/coverage.lcov
 
       # Steps to push code coverage report to codecov.io
-      #- codecov/upload:
-      #    file: <coverage report path>
+      - codecov/upload:
+          file: tests/coverage.lcov
   
   ui-tests:
     docker:

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-import { formatJSON } from '../../format_json.js';
+import { formatJSON } from '../src/format_json.js';
 
 describe('formatJSON function', function() {
     it('formats Array,', function () {
