@@ -4,7 +4,6 @@ version: 2.1
 # https://circleci.com/docs/2.0/language-javascript/
 # https://github.com/cypress-io/cypress-example-kitchensink/blob/master/basic/circle.yml
 
-# Orb to integrate Codecov
 orbs:
  codecov: codecov/codecov@1.0.5
  coveralls: coveralls/coveralls@1.0.4
@@ -22,10 +21,6 @@ jobs:
           working_directory: tests # directory where steps will run
           name: install-npm-wee
           command: npm install
-      # - run:
-      #     working_directory: tests
-      #     name: test
-      #     command: npm test
       - run:
           working_directory: tests
           name: code-coverage
@@ -34,16 +29,9 @@ jobs:
           working_directory: tests
           name: report-code-coverage
           command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && cp coverage.lcov lcov.info && mkdir ../coverage && cp lcov.info ../coverage/
-      - store_artifacts:
-          path: tests/coverage.lcov
-      # - run:
-      #     working_direcory: tests
-      #     name: move-coverage-report
-      #     command: mkdir ../coverage && cp lcov.info ../coverage/
-      
+
       - coveralls/upload
 
-      # Steps to push code coverage report to codecov.io
       - codecov/upload:
           file: tests/coverage.lcov
   
