@@ -12,7 +12,8 @@ Issues: [github.com/srikanthmanda/json-formatter/issues](https://github.com/srik
 
 Tests: [![CircleCI](https://circleci.com/gh/srikanthmanda/json-formatter.svg?style=svg)](https://circleci.com/gh/srikanthmanda/json-formatter)
 [![codecov](https://codecov.io/gh/srikanthmanda/json-formatter/branch/master/graph/badge.svg)](https://codecov.io/gh/srikanthmanda/json-formatter)
-<!-- UI Tests: [![Cypress.io UI Tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/f1mstu/runs) -->
+[![Coverage Status](https://coveralls.io/repos/github/srikanthmanda/json-formatter/badge.svg?branch=master)](https://coveralls.io/github/srikanthmanda/json-formatter?branch=master)
+[![Cypress.io UI Tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=rounded-square)](https://dashboard.cypress.io/#/projects/f1mstu/runs)
 
 
 Code Quality: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=srikanthmanda_json-formatter&metric=alert_status)](https://sonarcloud.io/dashboard?id=srikanthmanda_json-formatter)
