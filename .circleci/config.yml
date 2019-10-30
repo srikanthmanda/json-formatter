@@ -7,6 +7,7 @@ version: 2.1
 # Orb to integrate Codecov
 orbs:
  codecov: codecov/codecov@1.0.5
+ coveralls: coveralls/coveralls@1.0.4
 
 jobs:
   unit-tests:
@@ -32,10 +33,10 @@ jobs:
       - run:
           working_directory: tests
           name: report-code-coverage
-          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
+          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && mv coverage.lcov ../coverage/lcov.info
       - store_artifacts:
           path: tests/coverage.lcov
-
+      - coveralls/upload
       # Steps to push code coverage report to codecov.io
       - codecov/upload:
           file: tests/coverage.lcov
