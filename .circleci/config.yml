@@ -33,13 +33,13 @@ jobs:
       - run:
           working_directory: tests
           name: report-code-coverage
-          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
+          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && cp coverage.lcov lcov.info
       - store_artifacts:
           path: tests/coverage.lcov
       - run:
           working_direcory: tests
           name: move-coverage-report
-          command: mkdir ../coverage && mv coverage.lcov lcov.info && mv lcov.info ../coverage/
+          command: mkdir ../coverage && cp lcov.info ../coverage/
       
       - coveralls/upload
 
