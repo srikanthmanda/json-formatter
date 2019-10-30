@@ -39,7 +39,7 @@ jobs:
       - run:
           working_direcory: tests
           name: move-coverage-report
-          command: mkdir ../coverage && mv coverage.lov ../coverage/lcov.info
+          command: mkdir ../coverage && mv coverage.lcov ../coverage/lcov.info
       
       - coveralls/upload
 
