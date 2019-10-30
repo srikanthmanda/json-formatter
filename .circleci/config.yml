@@ -33,10 +33,16 @@ jobs:
       - run:
           working_directory: tests
           name: report-code-coverage
-          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov && mv coverage.lcov ../coverage/lcov.info
+          command: node_modules/.bin/nyc report --reporter=text-lcov > coverage.lcov
       - store_artifacts:
           path: tests/coverage.lcov
+      - run:
+          working_direcory: tests
+          name: move-coverage-report
+          command: mkdir ../coverage && mv coverage.lov ../coverage/lcov.info
+      
       - coveralls/upload
+
       # Steps to push code coverage report to codecov.io
       - codecov/upload:
           file: tests/coverage.lcov
